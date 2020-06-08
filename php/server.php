@@ -1,7 +1,6 @@
 <?php
-
 		$userid = mysqli_real_escape_string($dbconnect, $_POST["userid"]);
-		$result = $dbconnect->query("SELECT * FROM register where userid = '$userid'");
+		$result = mysqli_query($dbconnect,"SELECT * FROM register where userid = '$userid'");
 		// $num_rows = mysqli_num_rows($result);
 		// echo $result -> num_rows;
 		//die();

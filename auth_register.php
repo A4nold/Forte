@@ -1,5 +1,5 @@
 <?php
-$dbconnect = mysql_connect('localhost', 'forteho1_forteho1', 'VC2uFi27a4)a*T', 'forteho1_registration') or die("Failed to connect !!!, contact admin");
+$dbconnect = mysqli_connect('localhost', 'forteho1_forteho1', 'VC2uFi27a4)a*T', 'forteho1_registration') or die("Failed to connect !!!, contact admin");
 session_start();
 ?>
 <!DOCTYPE html>
