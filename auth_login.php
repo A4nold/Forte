@@ -2,6 +2,16 @@
 $dbconnect = mysqli_connect("localhost", "root", "", "registration") or die("Couldnt establish database connection !!!");
 session_start();
 
+// var_dump($dbconnect);
+// die;
+
+$ts = mysqli_query($dbconnect,"SELECT userid FROM register");
+$row = mysqli_num_rows($ts);
+
+var_dump($row);
+die;
+
+
 ?>
 <!DOCTYPE html>
 <html>

@@ -1,5 +1,5 @@
 <?php
-$dbconnect = mysqli_connect('localhost', 'root', '', 'registration') or die("Failed to connect !!!, contact admin");
+$dbconnect = mysql_connect('localhost', 'forteho1_forteho1', 'VC2uFi27a4)a*T', 'forteho1_registration') or die("Failed to connect !!!, contact admin");
 session_start();
 
 header("Access-Control-Allow-Origin: *");
@@ -15,9 +15,13 @@ if(strlen($user) < 1){
     echo json_encode("no user logge in");
 }else{
     if(strlen($role) > 1){
-        $otp1 = mt_rand(0,100);
-        $otp2 = mt_rand(0,100);
-        $otp = $otp1.$otp2;
+        $otp1 = mt_rand(0,9);
+        $otp2 = mt_rand(0,9);
+        $otp3 = mt_rand(0,9);
+        $otp4 = mt_rand(0,9);
+        $otp5 = mt_rand(0,9);
+
+        $otp = $otp1.$otp2.$otp3.$otp4.$otp5;
 
         $add = "insert into generateotp (userid,otp) values ('$user','$otp')";
 
@@ -34,7 +38,7 @@ if(strlen($user) < 1){
             mail($to,$subject,$message,$headers);
               
             // header('location:emails_activate.php');
-            echo json_encode("OTP sent to your email");
+            echo json_encode($otp." sent to your email");
         }else{
             $otp = "Generation fail";
             echo json_encode($otp);

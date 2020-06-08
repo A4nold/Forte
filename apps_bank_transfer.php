@@ -1,5 +1,5 @@
 <?php 
-  $dbconnect = mysqli_connect("localhost", "root", "", "registration") or die("Couldnt establish database connection !!!");
+  $dbconnect = mysql_connect("localhost", "forteho1_forteho1", "VC2uFi27a4)a*T", "forteho1_registration") or die("Couldnt establish database connection !!!");
   session_start();
   require 'php/functions.php';
 
@@ -1537,12 +1537,7 @@
           <div class="content-i">
             <div class="content-box">
               <div class="element-wrapper compact pt-4">
-                <div class="element-actions">
-                  <a class="btn btn-primary btn-sm" href="transfer.php"><i class="os-icon os-icon-ui-22"></i><span>Deposit</span></a><a class="btn btn-primary btn-sm" href="transfer.php"><i class="os-icon os-icon-grid-10"></i><span>Local Transfer</span></a><a class="btn btn-success btn-sm" href="transfer.php"><i class="os-icon os-icon-grid-10"></i><span>International Transfer</span></a>
-                </div>
-                <h6 class="element-header">
-                  Financial Overview
-                </h6>
+                
                 <div class="element-box-tp">
                   <div class="row">
                     <div class="col-lg-7 col-xxl-6">

@@ -36,12 +36,21 @@ else{
             $_SESSION['e_mail'] = $email;
             $_SESSION['role'] = $_POST["role"];
 
-            // $_SESSION['active'] = $user['active'];
-
-            //check user login
-            $_SESSION['isloggedin'] = true;
+            if($role == "admin"){
+                $_SESSION['isloggedin'] = true;
+                $_SESSION['role'] = $_POST["role"];
+                
+                header("location:apps_bank3.php");
+            }elseif ($role == "user") {
+               //check user login
+                $_SESSION['isloggedin'] = true;
+                $_SESSION['role'] = $_POST["role"];
             
-            header("location:apps_bank2.php");
+                header("location:apps_bank2.php");
+            }
+
+            
+           
         }else{
             $echo = "Incorrect username or password";
         }

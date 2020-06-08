@@ -3,6 +3,7 @@
     $user = $_SESSION['userid'];
     $bname = $_POST['bname'];
     $address = $_POST['address'];
+    $type = $_POST['type'];
     $country = $_POST['country'];
     $accname = $_POST['accname'];
     $accnum = $_POST['accnum'];
@@ -10,14 +11,15 @@
     $amt = $_POST['amt'];
     $details = $_POST['details'];
 
-    $_SESSION['bname'] = $_POST['bname'];
-    $_SESSION['address'] = $_POST['address'];
-    $_SESSION['country'] = $_POST['country'];
-    $_SESSION['accname'] = $_POST['accname'];
-    $_SESSION['accnum'] = $_POST['accnum'];
-    $_SESSION['snum'] = $_POST['snum'];
-    $_SESSION['amt'] = $_POST['amt'];
-    $_SESSION['details'] = $_POST['details'];
+    $_SESSION['bname'] = $bname;
+    $_SESSION['address'] = $address;
+    $_SESSION['type'] = $type;
+    $_SESSION['country'] = $country;
+    $_SESSION['accname'] = $accname;
+    $_SESSION['accnum'] = $accnum;
+    $_SESSION['snum'] = $snum;
+    $_SESSION['amt'] = $amt;
+    $_SESSION['details'] = $details;
 
     header("location: apps_bank_otp.php");
 

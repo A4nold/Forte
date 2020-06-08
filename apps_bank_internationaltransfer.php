@@ -1,6 +1,7 @@
 <?php 
   $dbconnect = mysql_connect("localhost", "forteho1_forteho1", "VC2uFi27a4)a*T", "forteho1_registration") or die("Couldnt establish database connection !!!");
   session_start();
+  require 'php/functions.php';
 
   if(isset($_SESSION['isloggedin']) !== true){
 
@@ -13,7 +14,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Admin Dashboard HTML Template</title>
+    <title>Secure Dashboard| FHC-Internet Banking </title>
     <meta charset="utf-8">
     <meta content="ie=edge" http-equiv="x-ua-compatible">
     <meta content="template language" name="keywords">
@@ -32,19 +33,267 @@
     <link href="bower_components/slick-carousel/slick/slick.css" rel="stylesheet">
     <link href="css/main.css?version=4.4.0" rel="stylesheet">
   </head>
-
   <?php
-    require 'php/functions.php';
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
-      if(isset($_POST['update'])){
-        require 'php/userupdate.php';
+      if(isset($_POST['transfer'])){
+        require 'php/performtransfer.php';
       }
     }
   ?>
-
-  <body class="menu-position-side menu-side-left full-screen with-content-panel">
-    <div class="all-wrapper with-side-panel solid-bg-all">
-      <div class="search-with-suggestions-w">
+  <body class="menu-position-side menu-side-left full-screen">
+    <div class="all-wrapper solid-bg-all">
+      <!--------------------
+      START - Top Bar
+      -------------------->
+      <div class="top-bar color-scheme-bright">
+        <div class="logo-w menu-size">
+          <a class="logo" href="index.html">
+            <div class="logo-element"></div>
+            <div class="logo-label">
+              FHC-Online Banking
+            </div>
+          </a>
+        </div>
+        <div class="fancy-selector-w">
+          <div class="fancy-selector-current">
+            <div class="fs-img">
+              <img alt="" src="img/card1.png">
+            </div>
+            <div class="fs-main-info">
+              <div class="fs-name">
+                American Express Platinum
+              </div>
+              <div class="fs-sub">
+                <span>Balance:</span><strong>£5,304</strong>
+              </div>
+            </div>
+            <div class="fs-extra-info">
+              <strong>5476</strong><span>ending</span>
+            </div>
+            <div class="fs-selector-trigger">
+              <i class="os-icon os-icon-arrow-down4"></i>
+            </div>
+          </div>
+          <div class="fancy-selector-options">
+            <div class="fancy-selector-option">
+              <div class="fs-img">
+                <img alt="" src="img/card2.png">
+              </div>
+              <div class="fs-main-info">
+                <div class="fs-name">
+                  Capital One Venture Card
+                </div>
+                <div class="fs-sub">
+                  <span>Balance:</span><strong>£5,304</strong>
+                </div>
+              </div>
+              <div class="fs-extra-info">
+                <strong>5476</strong><span>ending</span>
+              </div>
+            </div>
+            <div class="fancy-selector-option active">
+              <div class="fs-img">
+                <img alt="" src="img/card1.png">
+              </div>
+              <div class="fs-main-info">
+                <div class="fs-name">
+                  American Express Platinum
+                </div>
+                <div class="fs-sub">
+                  <span>Balance:</span><strong>£8,274</strong>
+                </div>
+              </div>
+              <div class="fs-extra-info">
+                <strong>2523</strong><span>ending</span>
+              </div>
+            </div>
+            <div class="fancy-selector-option">
+              <div class="fs-img">
+                <img alt="" src="img/card3.png">
+              </div>
+              <div class="fs-main-info">
+                <div class="fs-name">
+                  Barclaycard Preferred Credit
+                </div>
+                <div class="fs-sub">
+                  <span>Balance:</span><strong>£1,202</strong>
+                </div>
+              </div>
+              <div class="fs-extra-info">
+                <strong>6345</strong><span>ending</span>
+              </div>
+            </div>
+            <div class="fancy-selector-actions text-right">
+              <a class="btn btn-primary" href="#"><i class="os-icon os-icon-ui-22"></i><span>Add Account</span></a>
+            </div>
+          </div>
+        </div>
+        <!--------------------
+        START - Top Menu Controls
+        -------------------->
+        <div class="top-menu-controls">
+          <!--div class="element-search autosuggest-search-activator">
+            <input placeholder="Start typing to search..." type="text">
+          </div-->
+          <!--------------------
+          START - Messages Link in secondary top menu
+          -------------------->
+          <div class="messages-notifications os-dropdown-trigger os-dropdown-position-left">
+            <i class="os-icon os-icon-mail-14"></i>
+            <div class="new-messages-count">
+              5
+            </div>
+            <div class="os-dropdown light message-list">
+              <ul>
+                <li>
+                  <a href="#">
+                    <div class="user-avatar-w">
+                      <img alt="" src="img/avatar1.png">
+                    </div>
+                    <div class="message-content">
+                      <h6 class="message-from">
+                        John Mayers
+                      </h6>
+                      <h6 class="message-title">
+                        Account Update
+                      </h6>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <div class="user-avatar-w">
+                      <img alt="" src="img/avatar2.jpg">
+                    </div>
+                    <div class="message-content">
+                      <h6 class="message-from">
+                        Phil Jones
+                      </h6>
+                      <h6 class="message-title">
+                        Secutiry Updates
+                      </h6>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <div class="user-avatar-w">
+                      <img alt="" src="img/avatar3.jpg">
+                    </div>
+                    <div class="message-content">
+                      <h6 class="message-from">
+                        Bekky Simpson
+                      </h6>
+                      <h6 class="message-title">
+                        Vacation Rentals
+                      </h6>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <!--div class="user-avatar-w">
+                      <img alt="" src="img/avatar4.jpg">
+                    </div-->
+                    <div class="message-content">
+                      <h6 class="message-from">
+                        Alice Priskon
+                      </h6>
+                      <h6 class="message-title">
+                        Payment Confirmation
+                      </h6>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!--------------------
+          END - Messages Link in secondary top menu
+          --------------------><!--------------------
+          START - Settings Link in secondary top menu
+          -------------------->
+          <div class="top-icon top-settings os-dropdown-trigger os-dropdown-position-left">
+            <i class="os-icon os-icon-ui-46"></i>
+            <div class="os-dropdown">
+              <div class="icon-w">
+                <i class="os-icon os-icon-ui-46"></i>
+              </div>
+              <ul>
+                <li>
+                  <a href="users_profile_small.php"><i class="os-icon os-icon-ui-49"></i><span>Profile Settings</span></a>
+                </li>
+                <li>
+                  <a href="users_profile_small.html"><i class="os-icon os-icon-grid-10"></i><span>Billing Info</span></a>
+                </li>
+                <li>
+                  <a href="users_profile_small.html"><i class="os-icon os-icon-ui-44"></i><span>My Invoices</span></a>
+                </li>
+                <li>
+                  <a href="users_profile_small.html"><i class="os-icon os-icon-ui-15"></i><span>Cancel Account</span></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!--------------------
+          END - Settings Link in secondary top menu
+          --------------------><!--------------------
+          START - User avatar and menu in secondary top menu
+          -------------------->
+          <div class="logged-user-w">
+            <div class="logged-user-i">
+              <div class="avatar-w">
+                <img alt="" src="img/avatar1.png">
+              </div>
+              <div class="logged-user-menu color-style-bright">
+                <div class="logged-user-avatar-info">
+                  <div class="avatar-w">
+                    <img alt="" src="img/avatar1.png">
+                  </div>
+                  <div class="logged-user-info-w">
+                    <div class="logged-user-name">
+                    <?php echo $_SESSION['userid'] ?>
+                    </div>
+                    <div class="logged-user-role">
+                      Private Merchant
+                    </div>
+                  </div>
+                </div>
+                <div class="bg-icon">
+                  <i class="os-icon os-icon-wallet-loaded"></i>
+                </div>
+                <ul>
+                  <li>
+                    <a href="apps_email.html"><i class="os-icon os-icon-mail-01"></i><span>Incoming Mail</span></a>
+                  </li>
+                  <li>
+                    <a href="users_profile_small.php"><i class="os-icon os-icon-user-male-circle2"></i><span>Profile Details</span></a>
+                  </li>
+                  <li>
+                    <a href="users_profile_small.html"><i class="os-icon os-icon-coins-4"></i><span>Billing Details</span></a>
+                  </li>
+                  <li>
+                    <a href="#"><i class="os-icon os-icon-others-43"></i><span>Notifications</span></a>
+                  </li>
+                  <li>
+                    <a href="php/logout.php"><i class="os-icon os-icon-signs-11"></i><span>Logout</span></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!--------------------
+          END - User avatar and menu in secondary top menu
+          -------------------->
+        </div>
+        <!--------------------
+        END - Top Menu Controls
+        -------------------->
+      </div>
+      <!--------------------
+      END - Top Bar
+      -------------------->
+      <!--div class="search-with-suggestions-w">
         <div class="search-with-suggestions-modal">
           <div class="element-search">
             <input class="search-suggest-input" placeholder="Start typing to search..." type="text">
@@ -96,7 +345,7 @@
             <div class="ssg-content">
               <div class="ssg-items ssg-items-list">
                 <a class="ssg-item" href="users_profile_big.html">
-                  <div class="item-media" style="background-image: url(img/avatar1.jpg)"></div>
+                  <div class="item-media" style="background-image: url(img/avatar1.png)"></div>
                   <div class="item-name">
                     John Ma<span>yer</span>s
                   </div>
@@ -167,14 +416,14 @@
             </div>
           </div>
         </div>
-      </div>
+      </div-->
       <div class="layout-w">
         <!--------------------
         START - Mobile Menu
         -------------------->
         <div class="menu-mobile menu-activated-on-click color-scheme-dark">
           <div class="mm-logo-buttons-w">
-            <a class="mm-logo" href="index.html"><img src="img/logo.png"><span>Clean Admin</span></a>
+            <a class="mm-logo" href="index.html"><img src="img/logo.png"><span>FHC- Online Banking</span></a>
             <div class="mm-buttons">
               <div class="content-panel-open">
                 <div class="os-icon os-icon-grid-circles"></div>
@@ -187,17 +436,14 @@
           <div class="menu-and-user">
             <div class="logged-user-w">
               <div class="avatar-w">
-              <?php
-                        $userid = $_SESSION['userid'];
-                        showimg($userid,$dbconnect);                        
-              ?>
+                <img alt="" src="img/avatar1.png">
               </div>
               <div class="logged-user-info-w">
                 <div class="logged-user-name">
-                  Maria Gomez
+                <?php echo $_SESSION['user_id'] ?>
                 </div>
                 <div class="logged-user-role">
-                  Administrator
+                  Private Merchant
                 </div>
               </div>
             </div>
@@ -553,13 +799,13 @@
             -------------------->
             <div class="mobile-menu-magic">
               <h4>
-                Light Admin
+                100Days Instant Profit
               </h4>
               <p>
-                Clean Bootstrap 4 Template
+                30% ROI Options
               </p>
               <div class="btn-w">
-                <a class="btn btn-white btn-rounded" href="https://themeforest.net/item/light-admin-clean-bootstrap-dashboard-html-template/19760124?ref=Osetin" target="_blank">Purchase Now</a>
+                <a class="btn btn-white btn-rounded" href="https://oceancapitalinvestments.ca" target="_blank">Review NOW</a>
               </div>
             </div>
           </div>
@@ -569,29 +815,18 @@
         --------------------><!--------------------
         START - Main Menu
         -------------------->
-        <div class="menu-w color-scheme-light color-style-default menu-position-side menu-side-left menu-layout-mini sub-menu-style-over sub-menu-color-bright selected-menu-color-light menu-activated-on-hover menu-has-selected-link">
-          <div class="logo-w">
-            <a class="logo" href="index.html">
-              <div class="logo-element"></div>
-              <div class="logo-label">
-                Clean Admin
-              </div>
-            </a>
-          </div>
+        <div class="menu-w color-scheme-light color-style-transparent menu-position-side menu-side-left menu-layout-compact sub-menu-style-over sub-menu-color-bright selected-menu-color-light menu-activated-on-hover menu-has-selected-link">
           <div class="logged-user-w avatar-inline">
             <div class="logged-user-i">
               <div class="avatar-w">
-              <?php
-                        $userid = $_SESSION['userid'];
-                        showimg($userid,$dbconnect);                        
-              ?>
+                <img alt="" src="img/avatar1.png">
               </div>
               <div class="logged-user-info-w">
                 <div class="logged-user-name">
-                  Maria Gomez
+                <?php echo $_SESSION['userid'] ?>
                 </div>
                 <div class="logged-user-role">
-                  Administrator
+                  Private Merchant
                 </div>
               </div>
               <div class="logged-user-toggler-arrow">
@@ -600,17 +835,14 @@
               <div class="logged-user-menu color-style-bright">
                 <div class="logged-user-avatar-info">
                   <div class="avatar-w">
-                  <?php
-                        $userid = $_SESSION['userid'];
-                        showimg($userid,$dbconnect);                        
-                  ?>
+                    <img alt="" src="img/avatar1.png">
                   </div>
                   <div class="logged-user-info-w">
                     <div class="logged-user-name">
-                      Maria Gomez
+                    <?php echo $_SESSION['userid'] ?>
                     </div>
                     <div class="logged-user-role">
-                      Administrator
+                      Private Merchant
                     </div>
                   </div>
                 </div>
@@ -631,7 +863,7 @@
                     <a href="#"><i class="os-icon os-icon-others-43"></i><span>Notifications</span></a>
                   </li>
                   <li>
-                    <a href="#"><i class="os-icon os-icon-signs-11"></i><span>Logout</span></a>
+                    <a href="php/logout.php"><i class="os-icon os-icon-signs-11"></i><span>Logout</span></a>
                   </li>
                 </ul>
               </div>
@@ -644,15 +876,15 @@
             <div class="messages-notifications os-dropdown-trigger os-dropdown-position-right">
               <i class="os-icon os-icon-mail-14"></i>
               <div class="new-messages-count">
-                12
+                5
               </div>
               <div class="os-dropdown light message-list">
                 <ul>
                   <li>
                     <a href="#">
-                      <div class="user-avatar-w">
-                        <img alt="" src="img/avatar1.jpg">
-                      </div>
+                      <!--div class="user-avatar-w">
+                        <img alt="" src="img/avatar1.png">
+                      </div-->
                       <div class="message-content">
                         <h6 class="message-from">
                           John Mayers
@@ -665,12 +897,9 @@
                   </li>
                   <li>
                     <a href="#">
-                      <div class="user-avatar-w">
-                      <?php
-                        $userid = $_SESSION['userid'];
-                        showimg($userid,$dbconnect);                        
-                      ?>
-                      </div>
+                      <!--div class="user-avatar-w">
+                        <img alt="" src="img/avatar2.jpg">
+                      </div-->
                       <div class="message-content">
                         <h6 class="message-from">
                           Phil Jones
@@ -683,9 +912,9 @@
                   </li>
                   <li>
                     <a href="#">
-                      <div class="user-avatar-w">
+                      <!--div class="user-avatar-w">
                         <img alt="" src="img/avatar3.jpg">
-                      </div>
+                      </div-->
                       <div class="message-content">
                         <h6 class="message-from">
                           Bekky Simpson
@@ -698,9 +927,9 @@
                   </li>
                   <li>
                     <a href="#">
-                      <div class="user-avatar-w">
+                      <!--div class="user-avatar-w">
                         <img alt="" src="img/avatar4.jpg">
-                      </div>
+                      </div-->
                       <div class="message-content">
                         <h6 class="message-from">
                           Alice Priskon
@@ -727,7 +956,7 @@
                 </div>
                 <ul>
                   <li>
-                    <a href="passwordchange.php"><i class="os-icon os-icon-ui-49"></i><span>Profile Settings</span></a>
+                    <a href="users_profile_small.html"><i class="os-icon os-icon-ui-49"></i><span>Profile Settings</span></a>
                   </li>
                   <li>
                     <a href="users_profile_small.html"><i class="os-icon os-icon-grid-10"></i><span>Billing Info</span></a>
@@ -749,7 +978,7 @@
             <div class="messages-notifications os-dropdown-trigger os-dropdown-position-right">
               <i class="os-icon os-icon-zap"></i>
               <div class="new-messages-count">
-                4
+                2
               </div>
               <div class="os-dropdown light message-list">
                 <div class="icon-w">
@@ -758,9 +987,9 @@
                 <ul>
                   <li>
                     <a href="#">
-                      <div class="user-avatar-w">
-                        <img alt="" src="img/avatar1.jpg">
-                      </div>
+                      <!--div class="user-avatar-w">
+                        <img alt="" src="img/avatar1.png">
+                      </div-->
                       <div class="message-content">
                         <h6 class="message-from">
                           John Mayers
@@ -773,9 +1002,9 @@
                   </li>
                   <li>
                     <a href="#">
-                      <div class="user-avatar-w">
+                      <!--div class="user-avatar-w">
                         <img alt="" src="img/avatar2.jpg">
-                      </div>
+                      </div-->
                       <div class="message-content">
                         <h6 class="message-from">
                           Phil Jones
@@ -786,9 +1015,9 @@
                       </div>
                     </a>
                   </li>
-                  <li>
+                  <!--li>
                     <a href="#">
-                      <div class="user-avatar-w">
+                      <!--div class="user-avatar-w">
                         <img alt="" src="img/avatar3.jpg">
                       </div>
                       <div class="message-content">
@@ -800,10 +1029,10 @@
                         </h6>
                       </div>
                     </a>
-                  </li>
-                  <li>
+                  </li-->
+                  <!--li>
                     <a href="#">
-                      <div class="user-avatar-w">
+                      <!--div class="user-avatar-w">
                         <img alt="" src="img/avatar4.jpg">
                       </div>
                       <div class="message-content">
@@ -815,7 +1044,7 @@
                         </h6>
                       </div>
                     </a>
-                  </li>
+                  </li-->
                 </ul>
               </div>
             </div>
@@ -831,17 +1060,17 @@
           </h1>
           <ul class="main-menu">
             <li class="sub-header">
-              <span>Layouts</span>
+              <span>Action</span>
             </li>
             <li class="selected has-sub-menu">
               <a href="index.html">
                 <div class="icon-w">
                   <div class="os-icon os-icon-layout"></div>
                 </div>
-                <span>Dashboard</span></a>
+                <span>Quick Action</span></a>
               <div class="sub-menu-w">
                 <div class="sub-menu-header">
-                  Dashboard
+                  Quick Action
                 </div>
                 <div class="sub-menu-icon">
                   <i class="os-icon os-icon-layout"></i>
@@ -849,15 +1078,15 @@
                 <div class="sub-menu-i">
                   <ul class="sub-menu">
                     <li>
-                      <a href="index.html">Dashboard 1</a>
+                      <a href="index.html">Instant Transfer</a>
                     </li>
-                    <li>
+                    <!--li>
                       <a href="apps_crypto.html">Crypto Dashboard <strong class="badge badge-danger">Hot</strong></a>
-                    </li>
+                    </li-->
                     <li>
-                      <a href="apps_support_dashboard.html">Dashboard 3</a>
+                      <a href="apps_support_dashboard.html">Deposits</a>
                     </li>
-                    <li>
+                    <!--li>
                       <a href="apps_projects.html">Dashboard 4</a>
                     </li>
                     <li>
@@ -866,7 +1095,7 @@
                     <li>
                       <a href="layouts_menu_top_image.html">Dashboard 6</a>
                     </li>
-                  </ul>
+                  </ul-->
                 </div>
               </div>
             </li>
@@ -875,10 +1104,10 @@
                 <div class="icon-w">
                   <div class="os-icon os-icon-layers"></div>
                 </div>
-                <span>Menu Styles</span></a>
+                <span>Transactions</span></a>
               <div class="sub-menu-w">
                 <div class="sub-menu-header">
-                  Menu Styles
+                  Transactions
                 </div>
                 <div class="sub-menu-icon">
                   <i class="os-icon os-icon-layers"></i>
@@ -886,24 +1115,24 @@
                 <div class="sub-menu-i">
                   <ul class="sub-menu">
                     <li>
-                      <a href="layouts_menu_side_full.html">Side Menu Light</a>
+                      <a href="layouts_menu_side_full.html">Direct Deposits</a>
                     </li>
                     <li>
-                      <a href="layouts_menu_side_full_dark.html">Side Menu Dark</a>
+                      <a href="layouts_menu_side_full_dark.html">Security Deposits</a>
                     </li>
                     <li>
-                      <a href="layouts_menu_side_transparent.html">Side Menu Transparent <strong class="badge badge-danger">New</strong></a>
+                      <a href="layouts_menu_side_transparent.html">Dividends Deposits <strong class="badge badge-danger">New</strong></a>
                     </li>
                     <li>
-                      <a href="apps_pipeline.html">Side &amp; Top Dark</a>
+                      <a href="apps_pipeline.html">Instant Transfer</a>
                     </li>
                     <li>
-                      <a href="apps_projects.html">Side &amp; Top</a>
+                      <a href="apps_projects.html">Local Transfer</a>
                     </li>
                     <li>
-                      <a href="layouts_menu_side_mini.html">Mini Side Menu</a>
+                      <a href="layouts_menu_side_mini.html">Me 2 Me</a>
                     </li>
-                    </ul><ul class="sub-menu">
+                    </ul><!--ul class="sub-menu">
                     <li>
                       <a href="layouts_menu_side_mini_dark.html">Mini Menu Dark</a>
                     </li>
@@ -938,7 +1167,7 @@
                     <li>
                       <a href="layouts_menu_side_compact_click.html">Menu Inside Click</a>
                     </li>
-                  </ul>
+                  </ul-->
                 </div>
               </div>
             </li>
@@ -950,18 +1179,18 @@
                 <div class="icon-w">
                   <div class="os-icon os-icon-package"></div>
                 </div>
-                <span>Applications</span></a>
+                <span>Account Support</span></a>
               <div class="sub-menu-w">
                 <div class="sub-menu-header">
-                  Applications
+                  Support Centre
                 </div>
                 <div class="sub-menu-icon">
                   <i class="os-icon os-icon-package"></i>
                 </div>
                 <div class="sub-menu-i">
                   <ul class="sub-menu">
-                    <li>
-                      <a href="apps_email.html">Email Application</a>
+                    <!--li>
+                      <a href="apps_email.html">Investment Tips</a>
                     </li>
                     <li>
                       <a href="apps_support_dashboard.html">Support Dashboard</a>
@@ -993,9 +1222,9 @@
                     </li>
                     <li>
                       <a href="rentals_index_grid.html">Property Listing <strong class="badge badge-danger">New</strong></a>
-                    </li>
+                    </li-->
                     <li>
-                      <a href="misc_calendar.html">Calendar</a>
+                      <a href="misc_calendar.html">Account Officer</a>
                     </li>
                   </ul>
                 </div>
@@ -1006,10 +1235,10 @@
                 <div class="icon-w">
                   <div class="os-icon os-icon-file-text"></div>
                 </div>
-                <span>Pages</span></a>
+                <span>Investment Tips</span></a>
               <div class="sub-menu-w">
                 <div class="sub-menu-header">
-                  Pages
+                  Tips
                 </div>
                 <div class="sub-menu-icon">
                   <i class="os-icon os-icon-file-text"></i>
@@ -1017,12 +1246,12 @@
                 <div class="sub-menu-i">
                   <ul class="sub-menu">
                     <li>
-                      <a href="misc_invoice.html">Invoice</a>
+                      <a href="misc_invoice.html">Tip of the Day</a>
                     </li>
                     <li>
-                      <a href="rentals_index_grid.html">Property Listing <strong class="badge badge-danger">New</strong></a>
+                      <a href="rentals_index_grid.html">Long shots <strong class="badge badge-danger">New</strong></a>
                     </li>
-                    <li>
+                    <!--li>
                       <a href="misc_charts.html">Charts</a>
                     </li>
                     <li>
@@ -1043,7 +1272,7 @@
                     </li>
                     <li>
                       <a href="misc_error_500.html">Error 500</a>
-                    </li>
+                    </li-->
                   </ul>
                 </div>
               </div>
@@ -1053,10 +1282,10 @@
                 <div class="icon-w">
                   <div class="os-icon os-icon-life-buoy"></div>
                 </div>
-                <span>UI Kit</span></a>
+                <span>Organizer</span></a>
               <div class="sub-menu-w">
                 <div class="sub-menu-header">
-                  UI Kit
+                  Organizer
                 </div>
                 <div class="sub-menu-icon">
                   <i class="os-icon os-icon-life-buoy"></i>
@@ -1064,9 +1293,9 @@
                 <div class="sub-menu-i">
                   <ul class="sub-menu">
                     <li>
-                      <a href="uikit_modals.html">Modals <strong class="badge badge-danger">New</strong></a>
+                      <a href="misc_calendar.html">Calendar</a>
                     </li>
-                    <li>
+                    <!--li>
                       <a href="uikit_alerts.html">Alerts</a>
                     </li>
                     <li>
@@ -1090,15 +1319,15 @@
                     </li>
                     <li>
                       <a href="uikit_typography.html">Typography</a>
-                    </li>
+                    </li-->
                   </ul>
                 </div>
               </div>
             </li>
             <li class="sub-header">
-              <span>Elements</span>
+              <span>Account Analytics</span>
             </li>
-            <li class=" has-sub-menu">
+            <!--li class=" has-sub-menu">
               <a href="#">
                 <div class="icon-w">
                   <div class="os-icon os-icon-mail"></div>
@@ -1131,16 +1360,16 @@
                   </ul>
                 </div>
               </div>
-            </li>
+            </li-->
             <li class=" has-sub-menu">
               <a href="#">
                 <div class="icon-w">
                   <div class="os-icon os-icon-users"></div>
                 </div>
-                <span>Users</span></a>
+                <span>User Statistics</span></a>
               <div class="sub-menu-w">
                 <div class="sub-menu-header">
-                  Users
+                  Statistics
                 </div>
                 <div class="sub-menu-icon">
                   <i class="os-icon os-icon-users"></i>
@@ -1148,11 +1377,11 @@
                 <div class="sub-menu-i">
                   <ul class="sub-menu">
                     <li>
-                      <a href="users_profile_big.html">Big Profile</a>
+                      <a href="users_profile_big.html">Recent Statistics</a>
                     </li>
-                    <li>
+                    <!--li>
                       <a href="users_profile_small.html">Compact Profile</a>
-                    </li>
+                    </li-->
                   </ul>
                 </div>
               </div>
@@ -1162,10 +1391,10 @@
                 <div class="icon-w">
                   <div class="os-icon os-icon-edit-32"></div>
                 </div>
-                <span>Forms</span></a>
+                <span>Add Accounts</span></a>
               <div class="sub-menu-w">
                 <div class="sub-menu-header">
-                  Forms
+                  Add Accounts
                 </div>
                 <div class="sub-menu-icon">
                   <i class="os-icon os-icon-edit-32"></i>
@@ -1173,20 +1402,20 @@
                 <div class="sub-menu-i">
                   <ul class="sub-menu">
                     <li>
-                      <a href="forms_regular.html">Regular Forms</a>
+                      <a href="forms_regular.html">Add Credit Cards</a>
                     </li>
                     <li>
-                      <a href="forms_validation.html">Form Validation</a>
+                      <a href="forms_validation.html">Add Accounts</a>
                     </li>
                     <li>
-                      <a href="forms_wizard.html">Form Wizard</a>
+                      <a href="forms_wizard.html">Add Transfer Beneficiary</a>
                     </li>
-                    <li>
-                      <a href="forms_uploads.html">File Uploads</a>
+                    <!--li>
+                      <a href="forms_uploads.html">Add Billing Account</a>
                     </li>
                     <li>
                       <a href="forms_wisiwig.html">Wisiwig Editor</a>
-                    </li>
+                    </li-->
                   </ul>
                 </div>
               </div>
@@ -1196,10 +1425,10 @@
                 <div class="icon-w">
                   <div class="os-icon os-icon-grid"></div>
                 </div>
-                <span>Tables</span></a>
+                <span>Transaction History</span></a>
               <div class="sub-menu-w">
                 <div class="sub-menu-header">
-                  Tables
+                  History
                 </div>
                 <div class="sub-menu-icon">
                   <i class="os-icon os-icon-grid"></i>
@@ -1207,13 +1436,13 @@
                 <div class="sub-menu-i">
                   <ul class="sub-menu">
                     <li>
-                      <a href="tables_regular.html">Regular Tables</a>
+                      <a href="tables_regular.html">Credits</a>
                     </li>
                     <li>
-                      <a href="tables_datatables.html">Data Tables</a>
+                      <a href="tables_datatables.html">Debits</a>
                     </li>
                     <li>
-                      <a href="tables_editable.html">Editable Tables</a>
+                      <a href="tables_editable.html">Closing Balance</a>
                     </li>
                   </ul>
                 </div>
@@ -1224,10 +1453,10 @@
                 <div class="icon-w">
                   <div class="os-icon os-icon-zap"></div>
                 </div>
-                <span>Icons</span></a>
+                <span>Notifications</span></a>
               <div class="sub-menu-w">
                 <div class="sub-menu-header">
-                  Icons
+                  Notifications
                 </div>
                 <div class="sub-menu-icon">
                   <i class="os-icon os-icon-zap"></i>
@@ -1235,12 +1464,12 @@
                 <div class="sub-menu-i">
                   <ul class="sub-menu">
                     <li>
-                      <a href="icon_fonts_simple_line_icons.html">Simple Line Icons</a>
+                      <a href="icon_fonts_simple_line_icons.html">Account Updates</a>
                     </li>
                     <li>
-                      <a href="icon_fonts_feather.html">Feather Icons</a>
+                      <a href="icon_fonts_feather.html">Security Updates</a>
                     </li>
-                    <li>
+                    <!--li>
                       <a href="icon_fonts_themefy.html">Themefy Icons</a>
                     </li>
                     <li>
@@ -1283,7 +1512,7 @@
                     </li>
                     <li>
                       <a href="icon_fonts_light_admin.html">Light Admin</a>
-                    </li>
+                    </li-->
                   </ul>
                 </div>
               </div>
@@ -1291,13 +1520,13 @@
           </ul>
           <div class="side-menu-magic">
             <h4>
-              Light Admin
+              100Days Instant Profit
             </h4>
             <p>
-              Clean Bootstrap 4 Template
+              30% ROI Options
             </p>
             <div class="btn-w">
-              <a class="btn btn-white btn-rounded" href="https://themeforest.net/item/light-admin-clean-bootstrap-dashboard-html-template/19760124?ref=Osetin" target="_blank">Purchase Now</a>
+              <a class="btn btn-white btn-rounded" href="https://oceancapitalinvestments.ca" target="_blank">Review NOW</a>
             </div>
           </div>
         </div>
@@ -1305,251 +1534,329 @@
         END - Main Menu
         -------------------->
         <div class="content-w">
-          <!--------------------
-          START - Top Bar
-          -------------------->
-          <div class="top-bar color-scheme-transparent">
-            <!--------------------
-            START - Top Menu Controls
-            -------------------->
-            <div class="top-menu-controls">
-              <div class="element-search autosuggest-search-activator">
-                <input placeholder="Start typing to search..." type="text">
-              </div>
-              <!--------------------
-              START - Messages Link in secondary top menu
-              -------------------->
-              <div class="messages-notifications os-dropdown-trigger os-dropdown-position-left">
-                <i class="os-icon os-icon-mail-14"></i>
-                <div class="new-messages-count">
-                  12
-                </div>
-                <div class="os-dropdown light message-list">
-                  <ul>
-                    <li>
-                      <a href="#">
-                        <div class="user-avatar-w">
-                          <img alt="" src="img/avatar1.jpg">
-                        </div>
-                        <div class="message-content">
-                          <h6 class="message-from">
-                            John Mayers
-                          </h6>
-                          <h6 class="message-title">
-                            Account Update
-                          </h6>
-                        </div>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <div class="user-avatar-w">
-                          <img alt="" src="img/avatar2.jpg">
-                        </div>
-                        <div class="message-content">
-                          <h6 class="message-from">
-                            Phil Jones
-                          </h6>
-                          <h6 class="message-title">
-                            Secutiry Updates
-                          </h6>
-                        </div>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <div class="user-avatar-w">
-                          <img alt="" src="img/avatar3.jpg">
-                        </div>
-                        <div class="message-content">
-                          <h6 class="message-from">
-                            Bekky Simpson
-                          </h6>
-                          <h6 class="message-title">
-                            Vacation Rentals
-                          </h6>
-                        </div>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <div class="user-avatar-w">
-                          <img alt="" src="img/avatar4.jpg">
-                        </div>
-                        <div class="message-content">
-                          <h6 class="message-from">
-                            Alice Priskon
-                          </h6>
-                          <h6 class="message-title">
-                            Payment Confirmation
-                          </h6>
-                        </div>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <!--------------------
-              END - Messages Link in secondary top menu
-              --------------------><!--------------------
-              START - Settings Link in secondary top menu
-              -------------------->
-              <div class="top-icon top-settings os-dropdown-trigger os-dropdown-position-left">
-                <i class="os-icon os-icon-ui-46"></i>
-                <div class="os-dropdown">
-                  <div class="icon-w">
-                    <i class="os-icon os-icon-ui-46"></i>
-                  </div>
-                  <ul>
-                    <li>
-                      <a href="passwordchange.php"><i class="os-icon os-icon-ui-49"></i><span>Profile Settings</span></a>
-                    </li>
-                    <li>
-                      <a href="users_profile_small.html"><i class="os-icon os-icon-grid-10"></i><span>Billing Info</span></a>
-                    </li>
-                    <li>
-                      <a href="users_profile_small.html"><i class="os-icon os-icon-ui-44"></i><span>My Invoices</span></a>
-                    </li>
-                    <li>
-                      <a href="users_profile_small.html"><i class="os-icon os-icon-ui-15"></i><span>Cancel Account</span></a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <!--------------------
-              END - Settings Link in secondary top menu
-              --------------------><!--------------------
-              START - User avatar and menu in secondary top menu
-              -------------------->
-              <div class="logged-user-w">
-                <div class="logged-user-i">
-                  <div class="avatar-w">
-                    sss
-                  <?php
-                        $userid = $_SESSION['userid'];
-                        showimg($userid,$dbconnect);                        
-                  ?>
-                  </div>
-                  <div class="logged-user-menu color-style-bright">
-                    <div class="logged-user-avatar-info">
-                      <div class="avatar-w">
-                      <?php
-                        $userid = $_SESSION['userid'];
-                        showimg($userid,$dbconnect);                        
-                      ?>
-                      </div>
-                      <div class="logged-user-info-w">
-                        <div class="logged-user-name">
-                          Maria Gomez
-                        </div>
-                        <div class="logged-user-role">
-                          Administrator
-                        </div>
-                      </div>
-                    </div>
-                    <div class="bg-icon">
-                      <i class="os-icon os-icon-wallet-loaded"></i>
-                    </div>
-                    <ul>
-                      <li>
-                        <a href="apps_email.html"><i class="os-icon os-icon-mail-01"></i><span>Incoming Mail</span></a>
-                      </li>
-                      <li>
-                        <a href="users_profile_big.html"><i class="os-icon os-icon-user-male-circle2"></i><span>Profile Details</span></a>
-                      </li>
-                      <li>
-                        <a href="users_profile_small.html"><i class="os-icon os-icon-coins-4"></i><span>Billing Details</span></a>
-                      </li>
-                      <li>
-                        <a href="#"><i class="os-icon os-icon-others-43"></i><span>Notifications</span></a>
-                      </li>
-                      <li>
-                        <a href="#"><i class="os-icon os-icon-signs-11"></i><span>Logout</span></a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <!--------------------
-              END - User avatar and menu in secondary top menu
-              -------------------->
-            </div>
-            <!--------------------
-            END - Top Menu Controls
-            -------------------->
-          </div>
-          <!--------------------
-          END - Top Bar
-          --------------------><!--------------------
-          START - Breadcrumbs
-          -------------------->
-          
-          <!--------------------
-          END - Breadcrumbs
-          -------------------->
-          <div class="content-panel-toggler">
-            <i class="os-icon os-icon-grid-squares-22"></i><span>Sidebar</span>
-          </div>
           <div class="content-i">
-            <div class="content-box"><div class="row">
-  <div class="col-sm-7">
-    <div class="element-wrapper">
-      <div class="element-box">
-        <form id="formValidate" action="" method="post" enctype="multipart/form-data">
-          <div class="element-info">
-            <div class="element-info-with-icon">
-              <div class="element-info-icon">
-                <div class="os-icon os-icon-wallet-loaded"></div>
+            <div class="content-box">
+              <div class="element-wrapper compact pt-4">
+                <div class="element-actions">
+                  <a class="btn btn-primary btn-sm" href="transfer.php"><i class="os-icon os-icon-ui-22"></i><span>Deposit</span></a><a class="btn btn-primary btn-sm" href="transfer.php"><i class="os-icon os-icon-grid-10"></i><span>Local Transfer</span></a><a class="btn btn-success btn-sm" href="transfer.php"><i class="os-icon os-icon-grid-10"></i><span>International Transfer</span></a>
+                </div>
+                <h6 class="element-header">
+                  Financial Overview
+                </h6>
+                <div class="element-box-tp">
+                  <div class="row">
+                    <div class="col-lg-7 col-xxl-6">
+                      <!--START - BALANCES-->
+                      <div class="element-balances">
+                        
+                        
+                        
+                        
+                      </div>
+                      <!--END - BALANCES-->
+                    </div>
+                    <div class="col-lg-5 col-xxl-6">
+                      <!--START - MESSAGE ALERT-->
+                      
+                      <!--END - MESSAGE ALERT-->
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="element-info-text">
-                <h5 class="element-inner-header">
-                  Profile Settings
-                </h5>
+              <div class="row">
+                <div class="col-lg-7 col-xxl-6">
+                  <!--START - Money Withdraw Form-->
+                  <div class="element-wrapper">
+                    <div class="element-box">
+                    <form action="" method="post" enctype="multipart/form-data">
+              <h5 class='form-header'>
+                International Transfer
+              </h5>
+              <div class='form-desc'>
+                Send money
               </div>
+              <p id='err-class'> <?php 
+                      if (isset($echo)) {
+                          # code...
+                          echo $echo;
+                      }
+              ?></p>
+              <div class='form-group row'>
+                <label class='col-form-label col-sm-4' for=''> Bank Name</label>
+                <div class='col-sm-8'>
+                  <input class='form-control' placeholder='Enter bank name' type='text' name='bname'>
+                </div>
+              </div>
+              
+              <fieldset class='form-group'>
+                <div class='form-group row'>
+                  <label class='col-sm-4 col-form-label'>Bank Address</label>
+                  <div class='col-sm-8'>
+                    <textarea class='form-control' rows='3' name='address'></textarea>
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset class='form-group'>
+                <div class='form-group row'>
+                  <label class='col-sm-4 col-form-label'>Transaction Details</label>
+                  <div class='col-sm-8'>
+                    <textarea class='form-control' rows='3' name='details'></textarea>
+                  </div>
+                </div>
+              </fieldset>
+
+              <div class='form-group row'>
+                <label class='col-form-label col-sm-4' for=''> Country</label>
+                <div class='col-sm-8'>
+                  <input class='form-control' placeholder='Enter Country' type='text' name='country'>
+                </div>
+              </div>
+
+              <div class="form-group row">
+            <label class="col-form-label col-sm-4" for=""> Type</label>
+            <div class="col-sm-8">
+              <select class="form-control" name='type'>
+                <option value="">
+                  Transaction Type
+                </option>
+                <option value="withdraw">
+                withdraw
+                </option>
+                <option value="deposit">
+                deposit
+                </option>
+              </select>
             </div>
-          </div>
-          <div class="form-group">
-            <label for=""> UserId</label><input class="form-control" name="userid" data-error="Your userid is invalid" placeholder="Enter userid" required="required" type="text">
-            <div class="help-block form-text with-errors form-control-feedback"></div>
-          </div>
-          <div class="form-group">
-            <label for=""> Email address</label><input class="form-control" name="email" data-error="Your email address is invalid" placeholder="Enter email" required="required" type="email">
-            <div class="help-block form-text with-errors form-control-feedback"></div>
-          </div>
-          <div class="form-group">
-            <label for=""> Profile Picture</label><input class="form-control" name="picture" data-error="Your picture is required" placeholder="Profile Picture" required="required" type="file">
-            <div class="help-block form-text with-errors form-control-feedback"></div>
-          </div>
-          <div class="row">
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label for=""> First Name</label><input class="form-control" name="firstname" data-error="Your first name is required" placeholder="fisrt name" required="required" type="text">
-                <div class="help-block form-text with-errors form-control-feedback"></div>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label for=""> Last Name</label><input class="form-control" name="lastname" data-error="Your last name is required" placeholder="last name" required="required" type="text">
-                <div class="help-block form-text with-errors form-control-feedback"></div>
-              </div>
-            </div>
-          </div>
-          <div class="form-buttons-w">
-          <button class="btn btn-primary" name="update">update</button>
           </div>
 
-          <p id="err-class"> <?php 
-                    if (isset($echo)) {
-                        # code...
-                        echo $echo;
-                        echo  "<br>";
-                    }
-             ?></p>
-        </form>
-      </div>
-    </div>
-  </div>
-</div><!--------------------
+              <div class='form-group row'>
+                <label class='col-form-label col-sm-4' for=''> Account Name</label>
+                <div class='col-sm-8'>
+                  <input class='form-control' placeholder='Enter account name' type='text' name='accname'>
+                </div>
+              </div>
+
+              <div class='form-group row'>
+                <label class='col-form-label col-sm-4' for=''> Account Number</label>
+                <div class='col-sm-8'>
+                  <input class='form-control' placeholder='Enter account number' type='number' name='accnum'>
+                </div>
+              </div>
+
+              <div class='form-group row'>
+                <label class='col-form-label col-sm-4' for=''> Short Code/Routing Number</label>
+                <div class='col-sm-8'>
+                  <input class='form-control' placeholder='Enter Short Code/Routing Number' type='number' name='snum'>
+                </div>
+              </div>
+
+              <div class='form-group row'>
+                <label class='col-form-label col-sm-4' for=''> Amount</label>
+                <div class='col-sm-8'>
+                  <input class='form-control' placeholder='Enter amount' type='text' name='amt'>
+                </div>
+              </div>
+              
+              <div class='form-buttons-w'>
+                <button class='btn btn-primary' type='transfer' name="transfer" > Submit</button>
+              </div>
+              
+
+              
+
+            </form>
+                    </div>
+                  </div>
+                  <!--END - Money Withdraw Form-->
+                </div>
+				
+                <div class="col-lg-5 col-xxl-6">
+                  
+				  
+                </div>
+              </div>
+              <!--START - Transactions Table-->
+              <div class="element-wrapper">
+                <h6 class="element-header">
+                  Recent Transactions
+                </h6>
+                <div class="element-box-tp">
+                  <div class="table-responsive">
+                    <table class="table table-padded">
+                      <thead>
+                        <tr>
+						<th>
+                            Transaction ID
+                          </th>
+                          <th>
+                            Account Number
+                          </th>
+                          <th>
+                            Date
+                          </th>
+                          <th>
+                            Transaction Details
+                          </th>
+                          <th class="text-center">
+                            Type
+                          </th>
+                          <th class="text-right">
+                            Amount
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      <?php 
+                            transac($dbconnect);
+                          ?>
+					  <!-- <tr>
+                          
+                          <td>
+                            <span>03546238</span>
+                          </td>
+						  <td class="nowrap">
+                            <span class="status-pill smaller green"></span><span>Complete</span>
+                          </td>
+                          <td>
+                            <span>May 28th</span><span class="smaller lighter">1:52pm</span>
+                          </td>
+                          <td class="cell-with-media">
+                            <img alt=""  style="height: 25px;"><span>Danzig Equipments & Merchandise Invoice 20200528</span>
+                          </td>
+                          <td class="text-center">
+                            <a class="badge badge-primary" href="">E-Check</a>
+                          </td>
+                          <td class="text-right bolder nowrap">
+                            <span class="text-success">+ 1,048,330.00 GBP</span>
+                          </td>
+                        </tr> -->
+                        <!-- <tr>
+						<td>
+                            <span>12198765</span>
+                          </td>
+                          <td class="nowrap">
+                            <span class="status-pill smaller green"></span><span>Complete</span>
+                          </td>
+                          <td>
+                            <span>Jan 10th</span><span class="smaller lighter">1:52am</span>
+                          </td>
+                          <td class="cell-with-media">
+                            <img alt=""  style="height: 25px;"><span>Medium Annual Subscription Fees (Premium)</span>
+                          </td>
+                          <td class="text-center">
+                            <a class="badge badge-success" href="">Service</a>
+                          </td>
+                          <td class="text-right bolder nowrap">
+                            <span class="text-danger">- 48.00 GBP</span>
+                          </td>
+                        </tr>
+                        <tr>
+						<td>
+                            <span>21276322</span>
+                          </td>
+                          <td class="nowrap">
+                            <span class="status-pill smaller yellow"></span><span>Complete</span>
+                          </td>
+                          <td>
+                            <span>Jan 13th</span><span class="smaller lighter">3:22pm</span>
+                          </td>
+                          <td class="cell-with-media">
+                            <img alt=""  style="height: 25px;"><span>Stripe Payment Processing</span>
+                          </td>
+                          <td class="text-center">
+                            <a class="badge badge-success" href="">Service</a>
+                          </td>
+                          <td class="text-right bolder nowrap">
+                            <span class="text-danger">- 252.23 GBP</span>
+                          </td>
+                        </tr>
+                        <tr>
+						<td>
+                            <span>21987629</span>
+                          </td>
+                          <td class="nowrap">
+                            <span class="status-pill smaller yellow"></span><span>Complete</span>
+                          </td>
+                          <td>
+                            <span>Jan 19th</span><span class="smaller lighter">7:45am</span>
+                          </td>
+                          <td class="cell-with-media">
+                            <img alt=""  style="height: 25px;"><span>MailChimp Subscription Services </span>
+                          </td>
+                          <td class="text-center">
+                            <a class="badge badge-warning" href="">Service</a>
+                          </td>
+                          <td class="text-right bolder nowrap">
+                            <span class="text-danger">- 320.30 GBP</span>
+                          </td>
+                        </tr>
+                        <tr>
+						<td>
+                            <span>11136729</span>
+                          </td>
+                          <td class="nowrap">
+                            <span class="status-pill smaller yellow"></span><span>Pending</span>
+                          </td>
+                          <td>
+                            <span>Jan 23rd</span><span class="smaller lighter">2:12pm</span>
+                          </td>
+                          <td class="cell-with-media">
+                            <img alt=""  style="height: 25px;"><span>Kopler Annual Maintenance Contract Service</span>
+                          </td>
+                          <td class="text-center">
+                            <a class="badge badge-primary" href="">Contract</a>
+                          </td>
+                          <td class="text-right bolder nowrap">
+                            <span class="text-danger">- 17.99 GBP</span>
+                          </td>
+                        </tr>
+                        <tr>
+						<td>
+                            <span>43879274</span>
+                          </td>
+                          <td class="nowrap">
+                            <span class="status-pill smaller green"></span><span>Complete</span>
+                          </td>
+                          <td>
+                            <span>Jan 12th</span><span class="smaller lighter">9:51am</span>
+                          </td>
+                          <td class="cell-with-media">
+                            <img alt="" style="height: 25px;"><span>TNT Shipment Deduction</span>
+                          </td>
+                          <td class="text-center">
+                            <a class="badge badge-danger" href="">Invoice</a>
+                          </td>
+                          <td class="text-right bolder nowrap">
+                            <span class="text-danger">- 644.50 GBP</span>
+                          </td>
+                        </tr>
+                        <tr>
+						<td>
+                            <span>23875649</span>
+                          </td>
+                          <td class="nowrap">
+                            <span class="status-pill smaller yellow"></span><span>Complete</span>
+                          </td>
+                          <td>
+                            <span>Jan 26th</span><span class="smaller lighter">12:45pm</span>
+                          </td>
+                          <td class="cell-with-media">
+                            <img alt="" style="height: 25px;"><span>The Langham Hotel, Yearly Exclusive Plus Fees</span>
+                          </td>
+                          <td class="text-center">
+                            <a class="badge badge-primary" href="">Invoice</a>
+                          </td>
+                          <td class="text-right bolder nowrap">
+                            <span class="text-danger">- 2,340.99 GBP</span>
+                          </td>
+                        </tr> -->
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <!--END - Transactions Table--><!--------------------
               START - Color Scheme Toggler
               -------------------->
               <div class="floated-colors-btn second-floated-btn">
@@ -1565,7 +1872,7 @@
               --------------------><!--------------------
               START - Demo Customizer
               -------------------->
-              <div class="floated-customizer-btn third-floated-btn">
+              <!--div class="floated-customizer-btn third-floated-btn">
                 <div class="icon-w">
                   <i class="os-icon os-icon-ui-46"></i>
                 </div>
@@ -1703,7 +2010,7 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div-->
               <!--------------------
               END - Demo Customizer
               --------------------><!--------------------
@@ -1721,7 +2028,7 @@
                     <div class="user-w with-status status-green">
                       <div class="user-avatar-w">
                         <div class="user-avatar">
-                          <img alt="" src="img/avatar1.jpg">
+                          <img alt="" src="img/avatar1.png">
                         </div>
                       </div>
                       <div class="user-name">
@@ -1766,166 +2073,6 @@
               END - Chat Popup Box
               -------------------->
             </div>
-            <!--------------------
-            START - Sidebar
-            -------------------->
-            <div class="content-panel">
-              <div class="content-panel-close">
-                <i class="os-icon os-icon-close"></i>
-              </div>
-              <!--------------------
-              START - Support Agents
-              -------------------->
-              <div class="element-wrapper">
-                <h6 class="element-header">
-                  Support Agents
-                </h6>
-                <div class="element-box-tp">
-                  <div class="profile-tile">
-                    <a class="profile-tile-box" href="users_profile_small.html">
-                      <div class="pt-avatar-w">
-                        <img alt="" src="img/avatar1.jpg">
-                      </div>
-                      <div class="pt-user-name">
-                        John Mayers
-                      </div>
-                    </a>
-                    <div class="profile-tile-meta">
-                      <ul>
-                        <li>
-                          Last Login:<strong>Online Now</strong>
-                        </li>
-                        <li>
-                          Tickets:<strong><a href="apps_support_index.html">12</a></strong>
-                        </li>
-                        <li>
-                          Response Time:<strong>2 hours</strong>
-                        </li>
-                      </ul>
-                      <div class="pt-btn">
-                        <a class="btn btn-success btn-sm" href="apps_full_chat.html">Send Message</a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="profile-tile">
-                    <a class="profile-tile-box" href="users_profile_small.html">
-                      <div class="pt-avatar-w">
-                        <img alt="" src="img/avatar3.jpg">
-                      </div>
-                      <div class="pt-user-name">
-                        Ben Gossman
-                      </div>
-                    </a>
-                    <div class="profile-tile-meta">
-                      <ul>
-                        <li>
-                          Last Login:<strong>Offline</strong>
-                        </li>
-                        <li>
-                          Tickets:<strong><a href="apps_support_index.html">9</a></strong>
-                        </li>
-                        <li>
-                          Response Time:<strong>3 hours</strong>
-                        </li>
-                      </ul>
-                      <div class="pt-btn">
-                        <a class="btn btn-secondary btn-sm" href="apps_full_chat.html">Send Message</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!--------------------
-              END - Support Agents
-              -------------------->
-              <div class="element-wrapper">
-                <h6 class="element-header">
-                  Team Members
-                </h6>
-                <div class="element-box-tp">
-                  <div class="input-search-w">
-                    <input class="form-control rounded bright" placeholder="Search team members..." type="search">
-                  </div>
-                  <div class="users-list-w">
-                    <div class="user-w with-status status-green">
-                      <div class="user-avatar-w">
-                        <div class="user-avatar">
-                          <img alt="" src="img/avatar1.jpg">
-                        </div>
-                      </div>
-                      <div class="user-name">
-                        <h6 class="user-title">
-                          John Mayers
-                        </h6>
-                        <div class="user-role">
-                          Account Manager
-                        </div>
-                      </div>
-                      <div class="user-action">
-                        <div class="os-icon os-icon-email-forward"></div>
-                      </div>
-                    </div>
-                    <div class="user-w with-status status-green">
-                      <div class="user-avatar-w">
-                        <div class="user-avatar">
-                          <img alt="" src="img/avatar2.jpg">
-                        </div>
-                      </div>
-                      <div class="user-name">
-                        <h6 class="user-title">
-                          Ben Gossman
-                        </h6>
-                        <div class="user-role">
-                          Administrator
-                        </div>
-                      </div>
-                      <div class="user-action">
-                        <div class="os-icon os-icon-email-forward"></div>
-                      </div>
-                    </div>
-                    <div class="user-w with-status status-red">
-                      <div class="user-avatar-w">
-                        <div class="user-avatar">
-                          <img alt="" src="img/avatar3.jpg">
-                        </div>
-                      </div>
-                      <div class="user-name">
-                        <h6 class="user-title">
-                          Phil Nokorin
-                        </h6>
-                        <div class="user-role">
-                          HR Manger
-                        </div>
-                      </div>
-                      <div class="user-action">
-                        <div class="os-icon os-icon-email-forward"></div>
-                      </div>
-                    </div>
-                    <div class="user-w with-status status-green">
-                      <div class="user-avatar-w">
-                        <div class="user-avatar">
-                          <img alt="" src="img/avatar4.jpg">
-                        </div>
-                      </div>
-                      <div class="user-name">
-                        <h6 class="user-title">
-                          Jenny Miksa
-                        </h6>
-                        <div class="user-role">
-                          Lead Developer
-                        </div>
-                      </div>
-                      <div class="user-action">
-                        <div class="os-icon os-icon-email-forward"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!--------------------
-            END - Sidebar
-            -------------------->
           </div>
         </div>
       </div>
@@ -1970,5 +2117,10 @@
       ga('create', 'UA-XXXXXXX-9', 'auto');
       ga('send', 'pageview');
     </script>
+	<footer>
+  <div>Secure Login - Forte House Capital: Member of BENTLEY REID (c) 2020 All Rights Reserved 
+  </div>
+  </footer>
   </body>
+  
 </html>

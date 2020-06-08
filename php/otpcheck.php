@@ -6,6 +6,7 @@
     $country = $_SESSION['country'];
     $accname = $_SESSION['accname'];
     $accnum = $_SESSION['accnum'];
+    $type = $_SESSION['type'];
     $snum = $_SESSION['snum'];
     $amt = $_SESSION['amt'];
     $details = $_SESSION['details'];
@@ -38,14 +39,15 @@
                 $snum = $dbconnect -> real_escape_string($snum);
                 $amt = $dbconnect -> real_escape_string($amt);
                 $details = $dbconnect -> real_escape_string($details);
+                $type = $dbconnect -> real_escape_string($type);
                 $uniquenumber = $otp1.$otp2;
                 $timestamp = date('Y-m-d H:i:s');
 
 
                 $add = "insert into transactionhistory ( userid,bankname,bankaddress,country,accountname,
-                accountnumber,shortcode,amount, date,details,uniquenumber) values 
+                accountnumber,shortcode,amount, date,details,type,uniquenumber) values 
                 ('$user','$bname','$address','$country','$accname','$accnum',
-                '$snum','$amt','$timestamp','$details','$uniquenumber')";
+                '$snum','$amt','$timestamp','$details','$type','$uniquenumber')";
 
                 $check = mysqli_query($dbconnect, $add);
 
