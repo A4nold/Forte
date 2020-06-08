@@ -27,7 +27,6 @@ session_start();
     <link href="css/main.css?version=4.4.0" rel="stylesheet">
  
   </head>
-
   <?php 
   $error = null;
 
@@ -98,15 +97,11 @@ session_start();
             $headers = "From:arnoldekechi1998@gmail.com\r\n";
             $headers .= "MIME-Version: 1.0" . "\r\n";
             $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-  
-            mail($to,$subject,$message,$headers);
-              
+            mail($to,$subject,$message,$headers);  
             header('location:emails_activate.php');
-  
           }		
           else{
             $_SESSION['message'] = "Registration failed";
-
             header("location:php/errors.php");
           }	
         }
